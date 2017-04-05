@@ -15,7 +15,7 @@ class HistDBSkill(MycroftSkill):
         super(HistDBSkill, self).__init__(name="HistDBSkill")
 
     def initialize(self):
-        history_intent = IntentBuilder("HistoryIntent").require("history").optionally("history.re").build()
+        history_intent = IntentBuilder("HistoryIntent").require("History").require("Question").build()
         self.register_intent(history_intent, self.handle_history_intent)
 
     def handle_history_intent(self, message):

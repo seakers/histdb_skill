@@ -1,1 +1,1 @@
-(?P<Question>.*)
+history (?P<Question>.+)
