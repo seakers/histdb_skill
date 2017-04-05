@@ -4,6 +4,8 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
+import requests
+
 __author__ = 'antoni'
 
 LOGGER = getLogger(__name__)
@@ -20,7 +22,8 @@ class HistDBSkill(MycroftSkill):
 
     def handle_history_intent(self, message):
         print message.data.get("Question", None)
-        self.speak_dialog("welcome")
+        r = requests.post('http://127.0.0.1:8000/histdb/question', data={'question': message.data.get("Question", None)})
+        self.speak(r.json()['question'])
 
     def stop(self):
         pass
