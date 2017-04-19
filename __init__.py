@@ -22,7 +22,7 @@ class HistDBSkill(MycroftSkill):
 
     def handle_history_intent(self, message):
         print message.data.get("Question", None)
-        r = requests.post('http://127.0.0.1:8000/histdb/question', data={'question': message.data.get("Question", None)})
+        r = requests.post('http://13.58.68.155/api/histdb/question', data={'question': message.data.get("Question", None)})
         self.speak(r.json()['answer'])
 
     def stop(self):
